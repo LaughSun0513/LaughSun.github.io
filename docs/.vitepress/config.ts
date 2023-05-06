@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-    base: '/fe-blogs/',
     lang: 'zh-CN',
     title: 'LaughSun的前端之旅',
     description: 'LaughSun的前端之旅',
