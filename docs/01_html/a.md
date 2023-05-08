@@ -175,3 +175,134 @@ export default defineConfig({
     }
 })
 ```
+
+#### 1.3 部署文档到github pages
+##### 1.3.1 github上创建仓库
+这里创建一个仓库叫做fe-blogs
+
+##### 1.3.2 将仓库名字添加到配置中
+```ts
+// docs/.vitepress/config.ts
+//...
+export default defineConfig({
+    base: '/fe-blogs/',
+    //...
+})
+```
+
+##### 1.3.3 Github仓库中创建分支gh-pages
+<img src='/526b9c6d0a6cbf4581b2a3f5d.png' width='300' height='300'>
+
+##### 1.3.4 配置Github的部署脚本
+1.Setting --> Pages ---> Build and deployment选择GitHhub Actions
+2.创建Github Actions部署脚本
+  - 创建 `.github/workflows/deploy.yml`
+3.拷贝官方vitepress的yml文件
+[vitepress的部署脚本](https://vitepress.dev/guide/deploy)
+```yaml
+name: Deploy
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm ci
+      - name: Build
+        run: npm run docs:build
+      - uses: actions/configure-pages@v2
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs/.vitepress/dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v1
+```
+
+4.想使用pnpm来部署脚本
+> 注意:<br/>
+> 1.保证Node版本和环境中有pnpm
+> 2.保证项目中有lock文件pnpm-lock.yaml
+> 3.保证按照lock文件来安装依赖 pnpm install --frozen-lockfile
+
+```yaml
+# 保证Node版本和环境中有pnpm
+- uses: actions/checkout@v3
+  with:
+    fetch-depth: 0
+- name: Install pnpm
+  uses: pnpm/action-setup@v2
+  with:
+    version: 7.17.0
+- uses: actions/setup-node@v3
+  with:
+    node-version: 16
+    cache: pnpm
+```
+```yaml
+# 保证按照lock文件来安装依赖
+ - name: Install dependencies
+  run: pnpm install --frozen-lockfile
+```
+
+5.完整的yml文件
+
+```yaml
+name: Deploy
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.17.0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm run docs:build
+      - uses: actions/configure-pages@v2
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs/.vitepress/dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v1
+```
+
+6.Github Action部署通过生成链接
+https://laughsun0513.github.io/fe-blogs/
