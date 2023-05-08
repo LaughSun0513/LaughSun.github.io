@@ -15,17 +15,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
         with:
-          version: 7
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+          fetch-depth: 0
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          version: 7.17.0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
           cache: pnpm
       - name: Install dependencies
-        run: pnpm install
-      - run: pnpm ci
+        run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm run docs:build
       - uses: actions/configure-pages@v2
