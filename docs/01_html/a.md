@@ -191,7 +191,7 @@ export default defineConfig({
 ```
 
 ##### 1.3.3 Github仓库中创建分支gh-pages
-<img src='/526b9c6d0a6cbf4581b2a3f5d.png' width='300' height='300'>
+<img src='../.vitepress/public/526b9c6d0a6cbf4581b2a3f5d.png' width='300' height='300'>
 
 ##### 1.3.4 配置Github的部署脚本
 1.Setting --> Pages ---> Build and deployment选择GitHhub Actions
