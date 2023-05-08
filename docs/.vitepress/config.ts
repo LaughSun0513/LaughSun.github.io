@@ -57,6 +57,7 @@ export default defineConfig({
                 }
             ],
         },
+        outline: 'deep',
         socialLinks: [
             { icon: 'github', link: 'https://github.com/LaughSun0513' }
         ],

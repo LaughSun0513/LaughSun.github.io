@@ -237,9 +237,9 @@ jobs:
 
 4.想使用pnpm来部署脚本
 > 注意:<br/>
-> 1.保证Node版本和环境中有pnpm
-> 2.保证项目中有lock文件pnpm-lock.yaml
-> 3.保证按照lock文件来安装依赖 pnpm install --frozen-lockfile
+> 1.保证Node版本和环境中有pnpm<br/>
+> 2.保证项目中有lock文件pnpm-lock.yaml<br/>
+> 3.保证按照lock文件来安装依赖 pnpm install --frozen-lockfile<br/>
 
 ```yaml
 # 保证Node版本和环境中有pnpm
