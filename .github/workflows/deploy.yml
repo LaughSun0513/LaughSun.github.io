@@ -1,29 +1,49 @@
 name: Deploy
+
 on:
-  workflow_dispatch: {}
   push:
     branches:
-      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    strategy:
+      matrix:
+        node-version: [16]
+
     steps:
       - uses: actions/checkout@v2
-      - uses: vercel/ncc@0.28.0
-      - uses: pnpm/setup-pnpm@v1
-      - run: pnpm ci
+      - name: Setup Node.js and pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
       - name: Build
         run: pnpm run docs:build
-      - uses: actions/configure-pages@v2
-      - uses: actions/upload-pages-artifact@v1
+      - name: Configure Pages
+        uses: actions/configure-gh-pages@v3
         with:
-          path: docs/.vitepress/dist
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          cname: ${{ secrets.CNAME }}
       - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v3.7.0
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: docs/.vitepress/dist
+          cname: ${{ secrets.CNAME }}
