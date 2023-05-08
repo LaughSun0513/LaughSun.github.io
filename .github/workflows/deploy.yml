@@ -14,16 +14,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: yarn
-      - run: yarn run ci
+      - uses: actions/checkout@v2
+      - uses: vercel/ncc@0.28.0
+      - uses: pnpm/setup-pnpm@v1
+      - run: pnpm ci
       - name: Build
-        run: yarn run docs:build
+        run: pnpm run docs:build
       - uses: actions/configure-pages@v2
       - uses: actions/upload-pages-artifact@v1
         with:
