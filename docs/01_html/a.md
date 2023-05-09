@@ -1,31 +1,84 @@
-1.利用vitepress搭建出博客的架子
-2.对文章内容进行分栏分类
+## 目标
 
-基础知识技能树
+- 1.利用 vitepress 搭建出博客的架子
+- 2.对文章内容进行分栏分类
+  - 基础知识技能树
+    - HTML
+    - CSS
+    - JS
+    - React
+    - Vue
+    - Node
+    - TS
+    - 算法
+  - 前端进阶
+    - 低代码
+    - 微前端
+    - 跨端
+      - RN
+      - Flutter
+      - 小程序
+    - 性能优化
+    - 浏览器
+    - 工程化
+      - 编译/构建工具
+        - babel
+        - webpack
+        - vite
+        - rollup
+        - esbuild
+        - rspack
+        - swc
+      - 包管理工具
+        - pnpm
+        - yarn
+        - npm/cnpm
+        - lerna
+      - 组件库
+      - 脚手架
 
-  - HTML
-  - CSS
-  - JS
-  - React
-  - Vue
-  - Node
-  - TS
-  - 算法
+## 过程
 
-前端进阶
+```mermaid
+graph LR
+基础知识技能树 --> HTML
+基础知识技能树 --> CSS
+基础知识技能树 --> JS
+基础知识技能树 --> React
+基础知识技能树 --> Vue
+基础知识技能树 --> Node
+基础知识技能树 --> TS
+基础知识技能树 --> 算法
+```
+```mermaid
+graph LR
+前端进阶 --> 低代码
+前端进阶 --> 微前端
+前端进阶 --> 跨端
+跨端 --> RN
+跨端 --> Flutter
+跨端 --> 小程序
+前端进阶 --> 性能优化
+前端进阶 --> 浏览器
+前端进阶 --> 工程化
+工程化 --> 编译/构建工具
+工程化 --> 包管理工具
+工程化 --> 组件库
+工程化 --> 脚手架
+编译/构建工具 --> babel
+编译/构建工具 --> webpack
+编译/构建工具 --> vite
+编译/构建工具 --> rollup
+编译/构建工具 --> esbuild
+编译/构建工具 --> swc
+编译/构建工具 --> rspack
+包管理工具 --> pnpm
+包管理工具 --> yarn
+包管理工具 --> npm/cnpm
+包管理工具 --> lerna
+```
 
-  - 低代码
-  - 微前端
-  - 跨端
-   - RN
-   - Flutter
-   - 小程序
-  - 性能优化
-  - 浏览器
-  - 编译
-  - 工程化
-
-### 1.第一步 利用vitepress搭建出博客的架子
+### 1.第一步 利用 vitepress 搭建出博客的架子
 
 #### 1.1 创建和启动
 
@@ -36,7 +89,7 @@ pnpm add -D vitepress vue
 mkdir docs && echo '# Hello VitePress' > docs/index.md # docs/index.md默认就是首页
 ```
 
-``` json
+```json
 {
   // ...
 	"scripts": {
@@ -58,7 +111,8 @@ http://localhost:5173/
 ```bash
 touch docs/.vitepress/config.ts
 ```
-##### 1.2.1 修改首页docs/index.md
+
+##### 1.2.1 修改首页 docs/index.md
 
 ```md
 ---
@@ -96,8 +150,6 @@ features:
     title: xxx
     details: xxx.
 ---
-
-
 ```
 
 ##### 1.2.2 基础配置
@@ -120,7 +172,7 @@ export default defineConfig({
 
 > 预期: 点击右边的菜单，左边会出现对应的文章侧边栏
 
-``` tsx
+```ts
 export default defineConfig({
     themeConfig: {
         nav: [
@@ -176,11 +228,14 @@ export default defineConfig({
 })
 ```
 
-#### 1.3 部署文档到github pages
-##### 1.3.1 github上创建仓库
-这里创建一个仓库叫做fe-blogs
+#### 1.3 部署文档到 github pages
+
+##### 1.3.1 github 上创建仓库
+
+这里创建一个仓库叫做 fe-blogs
 
 ##### 1.3.2 将仓库名字添加到配置中
+
 ```ts
 // docs/.vitepress/config.ts
 //...
@@ -190,15 +245,19 @@ export default defineConfig({
 })
 ```
 
-##### 1.3.3 Github仓库中创建分支gh-pages
+##### 1.3.3 Github 仓库中创建分支 gh-pages
+
 <img src='../.vitepress/public/526b9c6d0a6cbf4581b2a3f5d.png' width='300' height='300'>
 
-##### 1.3.4 配置Github的部署脚本
-1.Setting --> Pages ---> Build and deployment选择GitHhub Actions
-2.创建Github Actions部署脚本
-  - 创建 `.github/workflows/deploy.yml`
-3.拷贝官方vitepress的yml文件
-[vitepress的部署脚本](https://vitepress.dev/guide/deploy)
+##### 1.3.4 配置 Github 的部署脚本
+
+1.Setting --> Pages ---> Build and deployment 选择 GitHhub Actions 2.创建 Github Actions 部署脚本
+
+- 创建 `.github/workflows/deploy.yml`
+
+3.拷贝官方 vitepress 的 yml 文件
+[vitepress 的部署脚本](https://vitepress.dev/guide/deploy)
+
 ```yaml
 name: Deploy
 on:
@@ -235,11 +294,9 @@ jobs:
         uses: actions/deploy-pages@v1
 ```
 
-4.想使用pnpm来部署脚本
-> 注意:<br/>
-> 1.保证Node版本和环境中有pnpm<br/>
-> 2.保证项目中有lock文件pnpm-lock.yaml<br/>
-> 3.保证按照lock文件来安装依赖 pnpm install --frozen-lockfile<br/>
+4.想使用 pnpm 来部署脚本
+
+> 注意:<br/> 1.保证 Node 版本和环境中有 pnpm<br/> 2.保证项目中有 lock 文件 pnpm-lock.yaml<br/> 3.保证按照 lock 文件来安装依赖 pnpm install --frozen-lockfile<br/>
 
 ```yaml
 # 保证Node版本和环境中有pnpm
@@ -255,13 +312,14 @@ jobs:
     node-version: 16
     cache: pnpm
 ```
+
 ```yaml
 # 保证按照lock文件来安装依赖
  - name: Install dependencies
   run: pnpm install --frozen-lockfile
 ```
 
-5.完整的yml文件
+5.完整的 yml 文件
 
 ```yaml
 name: Deploy
@@ -304,5 +362,5 @@ jobs:
         uses: actions/deploy-pages@v1
 ```
 
-6.Github Action部署通过生成链接
+6.Github Action 部署通过生成链接<br/>
 https://laughsun0513.github.io/fe-blogs/
