@@ -1,70 +1,85 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig } from "vitepress";
+import { withMermaid } from "vitepress-plugin-mermaid";
 
-export default defineConfig({
-    base: '/fe-blogs/',
-    lang: 'zh-CN',
-    title: 'LaughSun的前端之旅',
-    description: 'LaughSun的前端之旅',
-    themeConfig: {
-        siteTitle: '不积跬步无以至千里',
-        logo: 'https://avatars.githubusercontent.com/u/30840073?v=4',
-        nav: [
-            {
-                text: '菜单1',
-                link: '/01_html/a.md',
-                activeMatch: '/01_html/',
-            },
-            {
-                text: '菜单2',
-                link: '/02_css/a.md',
-                activeMatch: '/02_css/',
-            },
-            {
-                text: '菜单3',
-                link: '/03_js/a.md',
-                activeMatch: '/03_js/',
-            }
-        ],
-        sidebar: {
-            '/01_html/': [
+const config = withMermaid(
+	defineConfig({
+		base: "/fe-blogs/",
+		lang: "zh-CN",
+		title: "LaughSun的前端之旅",
+		description: "LaughSun的前端之旅",
+		themeConfig: {
+			siteTitle: "不积跬步无以至千里",
+			logo: "https://avatars.githubusercontent.com/u/30840073?v=4",
+			nav: createNav(),
+			sidebar: createSiderBar(),
+			outline: "deep",
+			socialLinks: [{ icon: "github", link: "https://github.com/LaughSun0513" }],
+			footer: {
+				message: "Released under the MIT License.",
+				copyright: "Copyright © 2023-present LaughSun",
+			},
+		},
+	})
+);
+
+
+function createNav() { 
+    return [
+        {
+            text: "前端基础知识",
+            activeMatch: "/01_basic/",
+            items: [
                 {
-                    text: '侧边章节1',
-                    items: [
-                        { text: 'a', link: '/01_html/a.md' },
-                        { text: 'b', link: '/01_html/b.md' }
-                    ],
-                    collapsed: false
-                }
-            ],
-            '/02_css/': [
+                    text: "HTML基础",
+                    link: "/01_basic/01_html/"
+                },
                 {
-                    text: '侧边章节1',
-                    items: [
-                        { text: 'a', link: '/02_css/a.md' },
-                        { text: 'b', link: '/02_css/b.md' }
-                    ],
-                    collapsed: false
-                }
-            ],
-            '/03_js/': [
+                    text: "CSS基础",
+                    link: "/01_basic/02_css/"
+                },
                 {
-                    text: '侧边章节1',
-                    items: [
-                        { text: 'a', link: '/03_js/a.md' },
-                        { text: 'b', link: '/03_js/b.md' }
-                    ],
-                    collapsed: false
-                }
+                    text: "JS基础",
+                    link: "/01_basic/03_js/"
+                },
             ],
         },
-        outline: 'deep',
-        socialLinks: [
-            { icon: 'github', link: 'https://github.com/LaughSun0513' }
+    ]
+}
+
+
+function createSiderBar() {
+    return {
+        "/01_basic/01_html/": [
+            {
+                text: "HTML",
+                items: [
+                    { text: "a", link: "/01_basic/01_html/a.md" },
+                    { text: "b", link: "/01_basic/01_html/b.md" },
+                ],
+                collapsed: false,
+            },
         ],
-        footer: {
-            message: 'Released under the MIT License.',
-            copyright: 'Copyright © 2023-present LaughSun'
-        }
-    },
-    
-})
+        "/01_basic/02_css/": [
+            {
+                text: "CSS",
+                items: [
+                    { text: "a", link: "/01_basic/02_css/a.md" },
+                    { text: "b", link: "/01_basic/02_css/b.md" },
+                ],
+                collapsed: false,
+            },
+        ],
+        "/01_basic/03_js/": [
+            {
+                text: "JS",
+                items: [
+                    { text: "a", link: "/01_basic/03_js/a.md" },
+                    { text: "b", link: "/01_basic/03_js/b.md" },
+                ],
+                collapsed: false,
+            },
+        ],
+    }
+}
+
+export default config;
