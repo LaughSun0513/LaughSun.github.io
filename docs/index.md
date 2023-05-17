@@ -7,16 +7,16 @@ titleTemplate: 前端笔记
 hero:
   name: 💡LaughSun
   text: 人生万事需自为 跬步江山既寥廓
-  tagline: 📝📅📍 前端学习笔记, 点亮前端技能树 📌 📌 📌.
+  tagline: 📅📍前端学习笔记, 点亮前端技能树 📌.
   image:
     src: https://camo.githubusercontent.com/62da68eb62b1e5f175f7d1f0191dd89a653d7908feb22d37d4a0ab07365d6791/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4d3967624264396e6244724f5475314d71782f67697068792e676966
     alt: LaughSun
   actions:
     - theme: brand
-      text: 开始学习
-      link: /01_basic/前端博客的搭建.md
+      text: 开始学习 📌
+      link: /1_basic/前端博客的搭建.md
     - theme: alt
-      text: 我的GitHub
+      text: 我的GitHub 📝
       link: https://github.com/LaughSun0513
 
 features:
