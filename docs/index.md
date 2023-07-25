@@ -5,7 +5,7 @@ title: LaughSun
 titleTemplate: 前端笔记
 
 hero:
-  name: 💡LaughSun
+  name: LaughSun
   text: 人生万事需自为 跬步江山既寥廓
   tagline: 📅📍前端学习笔记, 点亮前端技能树 📌.
   image:
@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: 开始学习 📌
-      link: /1_basic/前端博客的搭建.md
+      link: /articles/1_basic/前端博客的搭建.md
     - theme: alt
       text: 我的GitHub 📝
       link: https://github.com/LaughSun0513
@@ -33,3 +33,12 @@ features:
     title: 前端5年多，体会颇多
     details: 日新月异的前端技术发展很快，概念也很多，但是发现在迭代迅速的前端潮流里，我们不能随波逐流，要去学习那些不变的知识，这些知识的含金量很高，复利很高，不要浪费自己的时间和精力去学习没用的知识，扎实基础很重要，这也是我们安身立命的根本，掌握基础的前端技能，正常的开发流程，比如小程序的开发流程，Flutter的开发流程，RN/Vue/React的开发流程，都是最基本的，然后利用我们的技术结合业务去找到合适的技术选型和技术方案，达到业务收益，不要唯技术论，技术最终还是为业务服务.
 ---
+
+
+
+<style>
+  :root {
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
+  }
+</style>

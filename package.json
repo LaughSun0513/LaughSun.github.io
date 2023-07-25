@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vitepress dev docs --open",
+    "docs:dev": "vitepress dev docs --open --force",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
@@ -13,10 +13,13 @@
   "license": "ISC",
   "devDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "mermaid": "^8.14.0",
     "@vue/theme": "^2.2.1",
+    "mermaid": "^8.14.0",
     "vitepress": "1.0.0-alpha.75",
     "vitepress-plugin-mermaid": "^2.0.10",
     "vue": "^3.2.47"
+  },
+  "dependencies": {
+    "vite-plugin-vitepress-auto-sidebar": "^1.5.1"
   }
 }
