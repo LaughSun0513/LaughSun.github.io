@@ -1,41 +1,13 @@
 {
-  "hash": "7e20a938",
-  "browserHash": "06dcfadf",
+  "hash": "1158d9e7",
+  "browserHash": "32602cc9",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "fadebd62",
+      "fileHash": "c01c705a",
       "needsInterop": false
-    },
-    "@braintree/sanitize-url": {
-      "src": "../../../../node_modules/@braintree/sanitize-url/index.js",
-      "file": "@braintree_sanitize-url.js",
-      "fileHash": "bbbe6c11",
-      "needsInterop": true
-    },
-    "debug": {
-      "src": "../../../../node_modules/debug/src/browser.js",
-      "file": "debug.js",
-      "fileHash": "7eb0421e",
-      "needsInterop": true
-    },
-    "cytoscape-cose-bilkent": {
-      "src": "../../../../node_modules/cytoscape-cose-bilkent/cytoscape-cose-bilkent.js",
-      "file": "cytoscape-cose-bilkent.js",
-      "fileHash": "c1da08e7",
-      "needsInterop": true
-    },
-    "cytoscape": {
-      "src": "../../../../node_modules/cytoscape/dist/cytoscape.cjs.js",
-      "file": "cytoscape.js",
-      "fileHash": "1e11baba",
-      "needsInterop": true
     }
   },
-  "chunks": {
-    "chunk-76J2PTFD": {
-      "file": "chunk-76J2PTFD.js"
-    }
-  }
+  "chunks": {}
 }
